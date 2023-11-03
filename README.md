@@ -1,5 +1,7 @@
 # Salesforce Commerce Cloud (SFCC) One-Time Password Login for PWA Kit
 
+**Note:** This repository is a preview of the SFCC One-Time Password Login for PWA Kit. The purpose of this repository is to allow future customers to see the file structure of the package and to access the README and see how the package works and what features provides.
+
 SFCC One-Time Password Login for PWA Kit is a package that implements the feature of login without the need of a password to Salesforce Commerce Cloud Composable Storefront.
 
 ## Features
