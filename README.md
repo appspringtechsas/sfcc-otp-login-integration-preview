@@ -17,8 +17,9 @@ SFCC One-Time Password Login for PWA Kit provides the following features:
 1. SFCC One-Time Password Login for PWA Kit is designed to work with Salesforce PWA Kit, so in order to use this package you will need to create a local project using the React Retail App template. Run the following command to create a new project:
 
 	```shell
-	npx pwa-kit-create-app
+	npx @salesforce/pwa-kit-create-app@latest
 	```
+    Remember that you need to choose the option to use the *Retail app using your own Commerce Cloud Instance* and choose *Yes* when asked if you want to use template extensibility. 
 	For more information regarding the creation and usage of the React Retail App refer to the [Salesforce Developer documentation page](https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/getting-started.html)
 
 2. SFCC One-Time Password Login for PWA Kit requires that you set up a public SLAS client ID for your PWA Kit application. For this step, please follow the instructions in the Salesforce [Set Up API Access](https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/setting-up-api-access.html) guide
@@ -34,6 +35,34 @@ SFCC One-Time Password Login for PWA Kit provides the following features:
     3.4. After clicking the **Submit** button the private client will be created and on top most part of the page you will see a confirmation message showing the client Id and the secret key, please copy this key and store it in a safe place, because it WILL be needed for this package to properly work. If you lose this secret key you will need to create a new private client, since there is no way to see the value again
 
 ## Installation
+
+SFCC One-Time Password Login for PWA Kit offers two things: the modifications for PWA Kit and a SFRA cartridge
+
+1. The PWA Kit modifications are provided to template extensibility, if you enabled extensibility as requested in the first step of the Prerequisites section, your project should be ready to use the base template of this integration. In order to install the base template, run the following command:
+
+    ```shell
+	npm i @appspringtechsas/sfcc-otp-login-integration
+	```
+
+2. In order to make your project extendable from SFCC One-Time Password Login for PWA Kit, you need to go to your *package.json* file and in there, you will find a section called **ccExtensibility**. Modify the value of the **extends** property, replace the value with *@appspringtechsas/sfcc-otp-login-integration* and save the changes
+
+3. After modifying the *package.json* of your project, go to *config/default.js* and add a the following entry in *proxyConfigs*:
+
+     ```javascript
+    {
+        host: '<Your-Realm-ID>.dx.commercecloud.salesforce.com',
+        path: 'controller'
+    }
+	```
+    This new proxy configuration is needed for the calls to the SFRA controller that the package provides
+
+4. Routes file also needs modification, because the routes are imported from the Salesforce Retail React App by default. In all imports, replace the portions that contain *@salesforce/retail-react-app/* with *@appspringtechsas/sfcc-otp-login-integration/*. This will cause that routes are imported from SFCC One-Time Password Login for PWA Kit
+
+5. Run the commands *npm i* and then, *npm run build*
+
+6. A SFRA cartridge is also needed for the integration package to work. The cartridge and the controllers are inside *sfra-cartridges/* folder. For all the details on how to install *email_passwordless_login* cartridge, please refer to the [cartridge README](./sfra-cartridges/README.md)
+
+After following the steps, you should be ready to use SFCC One-Time Password Login for PWA Kit
 
 ## Usage
 
@@ -65,4 +94,4 @@ Registration has also been modified by SFCC One-Time Password Login for PWA Kit 
 
 ![](./PasswordlessRegistrationForm.png)
 
-Please refer to this [link]() in which you will find a video that shows all the features of the package already implemented in the Salesforce Commerce Cloud Composable Storefront.
+Please refer to this [link](https://www.youtube.com/watch?v=u1i518SlSlY&t=2s&ab_channel=AppspringDevelopmentInc) in which you will find a video that shows all the features of the package already implemented in the Salesforce Commerce Cloud Composable Storefront.
