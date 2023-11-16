@@ -1,6 +1,15 @@
 # Salesforce Commerce Cloud (SFCC) One-Time Password Login for PWA Kit
 
-**Note:** This repository is a preview of the SFCC One-Time Password Login for PWA Kit. The purpose of this repository is to allow future customers to see the file structure of the package and to access the README and see how the package works and what features provides.
+**Note:** This repository is a preview of the SFCC One-Time Password Login for PWA Kit. The purpose of this repository is to allow future customers to see the file structure of the package and to access the README and see how the package works and what features provides. It is important to mention that SFCC One-Time Password Login for PWA Kit uses **template extensibility**  so this preview is only meant to show the file structure and the files that were modified when building the package, the complete package contains the full structure of a PWA Kit. The files available in this preview are:
+
+- [_app-config](./sfcc-otp-login-integration/app/components/_app-config/index.jsx)
+- [app-core](./sfcc-otp-login-integration/app/components/app-core/index.jsx)
+- [header](./sfcc-otp-login-integration/app/components/header/index.jsx)
+- [shared ui index](./sfcc-otp-login-integration/app/components/shared/ui/index.jsx)
+- [use-auth-modal](./sfcc-otp-login-integration/app/hooks/use-auth-modal.js)
+- [passwordless-login page](./sfcc-otp-login-integration/app/pages/passwordless-login/index.jsx)
+- [routes](./sfcc-otp-login-integration/app/routes.jsx)
+- [email-passwordless-login storageService](./sfra-cartridges/cartridges/email_passwordless_login/cartridge/scripts/storageService.js)
 
 SFCC One-Time Password Login for PWA Kit is a package that implements the feature of login without the need of a password to Salesforce Commerce Cloud Composable Storefront.
 
